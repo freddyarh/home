@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Typist from 'react-typist-component';
 import { Jumbotron } from "./migration";
+import laptopCodeImage from '../../assets/img/laptop-code.svg';
 
 const MainBody = React.forwardRef(
   ({ gradient, title, message, icons }, ref) => {
+    const [loopKey, setLoopKey] = useState(0);
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        setLoopKey(prevKey => prevKey + 1);
+      }, 14000);
+
+      return () => clearInterval(interval);
+    }, []);
+
     return (
       <Jumbotron
         fluid
@@ -17,14 +28,24 @@ const MainBody = React.forwardRef(
       >
         <div id="stars"></div>
         <Container className="text-center">
-          <h1 ref={ref} className="display-1">
+          <img src={laptopCodeImage} alt="Description of SVG" className="svg-image" style={{ width: '150px', height: 'auto' }}/>
+          <h1 ref={ref} className="display-4"  style={{ fontWeight: 500 }}>
             {title}
           </h1>
-          <Typist>
-            <div className="lead typist">
-              {message}
-            </div>
+            
+          <div className="display-6">
+          <Typist key={loopKey} typingDelay={100} cursor={<span className='cursor'>|</span>}>
+            Frontend Developer
+            <Typist.Backspace count={18} />
+            <Typist.Delay ms={1500} />
+            Backend Developer
+            <Typist.Backspace count={17} />
+            <Typist.Delay ms={1500} />
+            Mobile Developer
+            <Typist.Backspace count={16} />
+            <Typist.Delay ms={1500} />
           </Typist>
+          </div>
           <div className="p-5">
             {icons.map((icon, index) => (
               <a

@@ -129,3 +129,20 @@ code {
     animation: progress 1.5s ease-in-out forwards;
   }
 }
+
+.dancing-script {
+  font-family: 'Dancing Script', cursive; /* Use the imported Dancing Script font */
+}
+
+
+@font-face {
+  font-family: 'Augustina'; /* Name of the font */
+  src: url('../assets/fonts/augustina/augustina.ttf') format('truetype'); /* Path to the font file */
+  font-weight: normal; /* Specify the font weight */
+  font-style: normal; /* Specify the font style */
+}
+
+.augustina-font {
+  font-family: 'Augustina', sans-serif; /* Use the imported font */
+  font-size: 30px;
+}
